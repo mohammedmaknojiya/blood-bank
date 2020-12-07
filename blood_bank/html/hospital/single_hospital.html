@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--our css file---->
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Single Hospital</title>
+</head>
+
+<body>
+    <div>
+        <h1 class="text-center font-weight-bold">Hospital Name Comes Here</h1>
+    </div>
+    <hr>
+
+    <a class=" d-flex justify-content-end py-3 pr-3" href="../html/teacher_dashboard.php"> <button
+            class="btn btn-danger">Go To Home Page!</button></a>
+
+
+    <div class="container details">
+        <h2 class="text-center">Hospital Details</h2>
+        <hr>
+        <h4>Hospital Name:</h4>
+        <h4>Address:</h4>
+        <h4>Phone No:</h4>
+        <h4>Email Id:</h4>
+
+    </div>
+    <div class="container" style="border: 2px solid black; width:fit-conten800px;padding: 20px;border-radius: 10px;">
+        <!---start table----->
+        <table class="table" id="mytable">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Blood Group</th>
+                    <th scope="col">Satus</th>
+                    <th scope="col">Request</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <?php
+                        $query= "SELECT * from student_register";
+
+                        $query_run=mysqli_query($conn,$query);
+                        
+                        
+                        while( $res= mysqli_fetch_array($query_run) )
+                        {
+
+                        ?>
+                    <td><?php  echo $res["std_fname"];  ?></td>
+                    <td><?php  echo $res["std_rollno"];  ?></td>
+
+                    <form action="student_list.php" method="post">
+                        <td><button class="btn btn-danger" type="submit" value=<?php echo $res["std_rollno"]; ?>
+                                name="mybutton">Visit Student Profile</button></td>
+                    </form>
+                </tr>
+                <?php
+                        }
+                    ?>
+
+            </tbody>
+        </table>
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
